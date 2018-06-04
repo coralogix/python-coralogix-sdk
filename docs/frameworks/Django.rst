@@ -1,7 +1,7 @@
 Django
 ======
 
-For enable `Django` send logs to `Coralogix` you should add following lines to your **settings.py**:
+To enable `Django` logging to `Coralogix` you'll need to add the following lines to your **settings.py**:
 
 .. code-block:: python
 
@@ -13,7 +13,7 @@ For enable `Django` send logs to `Coralogix` you should add following lines to y
         'formatters': {
             'default': {
                 'format': '[%(asctime)s]: %(levelname)s: %(message)s',
-            },
+            }
         },
         'handlers': {
             'coralogix': {
@@ -23,20 +23,20 @@ For enable `Django` send logs to `Coralogix` you should add following lines to y
                 'private_key': '[YOUR_PRIVATE_KEY_HERE]',
                 'app_name': '[YOUR_APPLICATION_NAME]',
                 'subsystem': '[YOUR_SUBSYTEM_NAME]',
-            },
+            }
         },
         'root': {
             'level': 'DEBUG',
             'handlers': [
                 'coralogix',
-            ],
+            ]
         },
         'loggers': {
             'backend': {
                 'level': 'DEBUG',
                 'handlers': [
                     'coralogix',
-                ],
-            },
-        },
+                ]
+            }
+        }
     }

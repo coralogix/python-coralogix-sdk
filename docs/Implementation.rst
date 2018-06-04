@@ -1,7 +1,7 @@
 Implementation
 ==============
 
-You should add `Coralogix` logging handler in your logging system:
+Adding `Coralogix` logging handler in your logging system:
 
 .. code-block:: python
 
@@ -24,7 +24,8 @@ You should add `Coralogix` logging handler in your logging system:
     # Send message
     logger.info("Hello World!")
 
-Also you can define it with `dictConfig` for `Python` `logging` library:
+
+Also, you can configure the SDK with `dictConfig` for `Python` `logging` library:
 
 .. code-block:: python
 
@@ -40,7 +41,7 @@ Also you can define it with `dictConfig` for `Python` `logging` library:
         'formatters': {
             'default': {
                 'format': '[%(asctime)s]: %(levelname)s: %(message)s',
-            },
+            }
         },
         'handlers': {
             'coralogix': {
@@ -50,20 +51,20 @@ Also you can define it with `dictConfig` for `Python` `logging` library:
                 'private_key': PRIVATE_KEY,
                 'app_name': APP_NAME,
                 'subsystem': SUB_SYSTEM,
-            },
+            }
         },
         'root': {
             'level': 'DEBUG',
             'handlers': [
                 'coralogix',
-            ],
+            ]
         },
         'loggers': {
             'backend': {
                 'level': 'DEBUG',
                 'handlers': [
                     'coralogix',
-                ],
-            },
-        },
+                ]
+            }
+        }
     })
