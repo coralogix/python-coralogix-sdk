@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Coralogix Logger default constants
+Coralogix Logger old versions compatible patch
 Author: Coralogix Ltd.
 Email: info@coralogix.com
 """
