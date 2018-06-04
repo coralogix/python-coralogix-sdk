@@ -14,5 +14,6 @@ DebugLogger.warning(
     'Import from "coralogix.coralogix_logger" is deprecated '
     'and will be removed in future versions! Please use "coralogix.handlers" instead.'
 )
+DebugLogger.debug_mode = False
 
 from .handlers.coralogix import CoralogixLogger
