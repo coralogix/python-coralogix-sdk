@@ -1,7 +1,7 @@
 Flask
 =====
 
-To enable `Flask` send to `Coralogix` use following code:
+To enable `Flask` logging to `Coralogix` you can use the following code template:
 
 .. code-block:: python
 
@@ -17,7 +17,7 @@ To enable `Flask` send to `Coralogix` use following code:
         'formatters': {
             'default': {
                 'format': '[%(asctime)s]: %(levelname)s: %(message)s',
-            },
+            }
         },
         'handlers': {
             'coralogix': {
@@ -27,22 +27,22 @@ To enable `Flask` send to `Coralogix` use following code:
                 'private_key': '[YOUR_PRIVATE_KEY_HERE]',
                 'app_name': '[YOUR_APPLICATION_NAME]',
                 'subsystem': '[YOUR_SUBSYTEM_NAME]',
-            },
+            }
         },
         'root': {
             'level': 'DEBUG',
             'handlers': [
                 'coralogix',
-            ],
+            ]
         },
         'loggers': {
             'backend': {
                 'level': 'DEBUG',
                 'handlers': [
                     'coralogix',
-                ],
-            },
-        },
+                ]
+            }
+        }
     })
 
     app = Flask(__name__)
