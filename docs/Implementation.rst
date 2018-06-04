@@ -6,7 +6,10 @@ You should add `Coralogix` logging handler in your logging system:
 .. code-block:: python
 
     import logging
+    # For version 1.*
     from coralogix.coralogix_logger import CoralogixLogger
+    # For version 2.*
+    from coralogix.handlers import CoralogixLogger
 
     PRIVATE_KEY = "[YOUR_PRIVATE_KEY_HERE]"
     APP_NAME = "[YOUR_APPLICATION_NAME]"
