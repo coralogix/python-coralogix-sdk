@@ -17,3 +17,4 @@ DebugLogger.warning(
 DebugLogger.debug_mode = False
 
 from .handlers.coralogix import CoralogixLogger
+from .constants import Coralogix
