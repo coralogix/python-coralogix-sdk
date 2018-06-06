@@ -1,4 +1,4 @@
-Coralogix Python SDK is written by Coralogix Ltd. and maintained by Eldar Aliiev.
+Coralogix Python SDK is written by Coralogix Ltd. and maintained by Coralogix Ltd.
 
 Contributors
 ````````````

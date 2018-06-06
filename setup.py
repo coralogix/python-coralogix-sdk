@@ -16,7 +16,7 @@ setup(
     author=coralogix.__author__,
     author_email=coralogix.__email__,
     maintainer=coralogix.__maintainer__,
-    maintainer_email=coralogix.__maintainer_email__,
+    maintainer_email=coralogix.__email__,
     url='http://www.coralogix.com/',
     download_url='https://github.com/coralogix/python-coralogix-sdk/archive/master.zip',
     license=coralogix.__license__,
