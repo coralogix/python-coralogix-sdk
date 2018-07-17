@@ -344,13 +344,13 @@ def _handler():
     """
     try:
         LoggerManager.stop()
-        if LoggerManager._thread:
-            LoggerManager._thread.join()
+        # if LoggerManager._thread:
+        #    LoggerManager._thread.join()
     except Exception:
         pass
 
 
 # Register thread events
-atexit.register(_handler)
-signal.signal(signal.SIGINT, handler)
-signal.signal(signal.SIGTERM, handler)
+# atexit.register(_handler)
+# signal.signal(signal.SIGINT, handler)
+# signal.signal(signal.SIGTERM, handler)
