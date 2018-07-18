@@ -13,11 +13,16 @@ class TestLoggerManager(TestCase):
         )
 
     def test_configure(self):
-        LoggerManager.configure(True)
+        LoggerManager.configure(
+            sync_time=False,
+            privateKey=self.PRIVATE_KEY,
+            applicationName=self.APP_NAME,
+            subsystemName=self.SUBSYSTEM_NAME
+        )
         self.assertIsInstance(LoggerManager.configured, bool)
         self.assertTrue(LoggerManager.configured)
         self.assertIsInstance(LoggerManager._sync_time, bool)
-        self.assertTrue(LoggerManager._sync_time)
+        self.assertFalse(LoggerManager._sync_time)
         self.assertIsInstance(LoggerManager._bulk_template, dict)
 
     def test_add_logline(self):

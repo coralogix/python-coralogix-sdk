@@ -262,7 +262,7 @@ class LoggerManager(object):
         """
         try:
             cls._thread = Thread(target=cls._internal_run)
-            cls._thread.daemon = False
+            cls._thread.daemon = True
             cls._thread.name = 'coralogix-sending-thread'
             cls._thread.start()
         except Exception as exc:
@@ -344,13 +344,13 @@ def _handler():
     """
     try:
         LoggerManager.stop()
-        # if LoggerManager._thread:
-        #    LoggerManager._thread.join()
+        if LoggerManager._thread:
+           LoggerManager._thread.join()
     except Exception:
         pass
 
 
 # Register thread events
-# atexit.register(_handler)
-# signal.signal(signal.SIGINT, handler)
-# signal.signal(signal.SIGTERM, handler)
+atexit.register(_handler)
+signal.signal(signal.SIGINT, handler)
+signal.signal(signal.SIGTERM, handler)
