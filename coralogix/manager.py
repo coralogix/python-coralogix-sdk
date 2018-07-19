@@ -274,6 +274,7 @@ class LoggerManager(object):
         """
         Flush all messages in buffer and send them immediately on the current thread
         """
+        DebugLogger.info('Flush buffer before exit')
         cls._send_bulk(time_sync=False)
 
     @classmethod
@@ -281,6 +282,7 @@ class LoggerManager(object):
         """
         Stop logger execution
         """
+        DebugLogger.info('Stopping buffer thread')
         cls._stop = True
 
     @classmethod
@@ -301,6 +303,7 @@ class LoggerManager(object):
         try:
             while True:
                 if cls._stop:
+                    cls.flush()
                     return
                 # Send log bulk
                 cls._send_bulk(time_sync=cls._sync_time)
