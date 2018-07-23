@@ -126,7 +126,7 @@ class LoggerManager(object):
                 else:
                     severity = int(Coralogix.Severity.DEBUG)
 
-                if int(Coralogix.Severity.DEBUG) < severity or severity > int(Coralogix.Severity.CRITICAL):
+                if int(Coralogix.Severity.DEBUG) > severity or severity > int(Coralogix.Severity.CRITICAL):
                     severity = int(Coralogix.Severity.DEBUG)
 
                 # Validate category
