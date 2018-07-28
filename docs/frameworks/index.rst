@@ -1,4 +1,4 @@
-Frameworks integration
+Framework integrations
 ======================
 
 .. toctree::
