@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Coralogix Logger Python SDK
+Coralogix Python SDK
 Author: Coralogix Ltd.
 Email: info@coralogix.com
 """
