@@ -20,7 +20,7 @@ setup(
     url='http://www.coralogix.com/',
     download_url='https://github.com/coralogix/python-coralogix-sdk/archive/master.zip',
     license=coralogix.__license__,
-    description='Coralogix Logger Python SDK',
+    description='Coralogix Python SDK',
     long_description=open('README.rst').read(),
     packages=find_packages(),
     python_requires='>=2.7',

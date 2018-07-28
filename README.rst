@@ -1,5 +1,5 @@
-Coralogix Logger Python SDK
-===========================
+Coralogix Python SDK
+====================
 
 .. image:: https://img.shields.io/pypi/v/coralogix_logger.svg
     :target: https://pypi.python.org/pypi/coralogix_logger
