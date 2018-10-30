@@ -26,7 +26,7 @@ setup(
     python_requires='>=2.7',
     install_requires=[
         'enum34==1.1.6',
-        'requests==2.18.4',
+        'requests==2.20.0',
     ],
     extras_require={
         'development': [
