@@ -1,13 +1,13 @@
 Installation
 ============
 
-You can install it with `pip`:
+Install the Coralogix python logger with `pip`:
 
 .. code-block:: bash
 
     $ pip install coralogix_logger
 
-or directly from sources:
+or directly from the sources:
 
 .. code-block:: bash
 
