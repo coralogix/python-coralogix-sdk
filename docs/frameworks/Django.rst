@@ -22,7 +22,7 @@ To enable `Django` logging to `Coralogix` you'll need to add the following lines
                 'formatter': 'default',
                 'private_key': '[YOUR_PRIVATE_KEY_HERE]',
                 'app_name': '[YOUR_APPLICATION_NAME]',
-                'subsystem': '[YOUR_SUBSYTEM_NAME]',
+                'subsystem': '[YOUR_SUBSYSTEM_NAME]',
             }
         },
         'root': {
