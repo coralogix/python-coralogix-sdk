@@ -26,7 +26,7 @@ To enable `Flask` logging to `Coralogix` you can use the following code template
                 'formatter': 'default',
                 'private_key': '[YOUR_PRIVATE_KEY_HERE]',
                 'app_name': '[YOUR_APPLICATION_NAME]',
-                'subsystem': '[YOUR_SUBSYTEM_NAME]',
+                'subsystem': '[YOUR_SUBSYSTEM_NAME]',
             }
         },
         'root': {
