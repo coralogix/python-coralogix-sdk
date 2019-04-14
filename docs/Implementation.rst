@@ -13,7 +13,7 @@ Adding `Coralogix` logging handler in your logging system:
 
     PRIVATE_KEY = "[YOUR_PRIVATE_KEY_HERE]"
     APP_NAME = "[YOUR_APPLICATION_NAME]"
-    SUB_SYSTEM = "[YOUR_SUBSYTEM_NAME]"
+    SUB_SYSTEM = "[YOUR_SUBSYSTEM_NAME]"
 
     # Get an instance of Python standard logger.
     logger = logging.getLogger("Python Logger")
@@ -36,7 +36,7 @@ Also, you can configure the SDK with `dictConfig` for `Python` `logging` library
 
     PRIVATE_KEY = '[YOUR_PRIVATE_KEY_HERE]'
     APP_NAME = '[YOUR_APPLICATION_NAME]'
-    SUB_SYSTEM = '[YOUR_SUBSYTEM_NAME]'
+    SUB_SYSTEM = '[YOUR_SUBSYSTEM_NAME]'
 
     logging.config.dictConfig({
         'version': 1,
