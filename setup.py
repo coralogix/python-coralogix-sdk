@@ -25,12 +25,14 @@ setup(
     packages=find_packages(),
     python_requires='>=2.7',
     install_requires=[
-        'enum34==1.1.6',
-        'requests==2.20.0',
+        'requests==2.21.0',
     ],
     extras_require={
         'development': [
             'wheel==0.31.0',
+        ],
+        ":python_version<'3'": [
+            'enum34',
         ],
     },
     tests_require=[
@@ -51,6 +53,8 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Internet :: Log Analysis',
         'Topic :: Software Development :: Libraries :: Python Modules',
