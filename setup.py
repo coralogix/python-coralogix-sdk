@@ -25,12 +25,14 @@ setup(
     packages=find_packages(),
     python_requires='>=2.7',
     install_requires=[
-        'enum34==1.1.6',
-        'requests==2.20.0',
+        'requests==2.21.0',
     ],
     extras_require={
         'development': [
             'wheel==0.31.0',
+        ],
+        ":python_version<'3'": [
+            'enum34',
         ],
     },
     tests_require=[
