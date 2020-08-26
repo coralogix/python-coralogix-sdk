@@ -23,16 +23,13 @@ setup(
     description='Coralogix Python SDK',
     long_description=open('README.rst').read(),
     packages=find_packages(),
-    python_requires='>=2.7',
+    python_requires='>=3.5',
     install_requires=[
-        'requests==2.21.0',
+        'requests==2.24.0',
     ],
     extras_require={
         'development': [
             'wheel==0.31.0',
-        ],
-        ":python_version<'3'": [
-            'enum34',
         ],
     },
     tests_require=[
@@ -47,10 +44,7 @@ setup(
         'Intended Audience :: System Administrators',
         'Intended Audience :: Manufacturing',
         'Intended Audience :: Telecommunications Industry',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
