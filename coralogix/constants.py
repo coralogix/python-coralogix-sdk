@@ -7,6 +7,7 @@ Author: Coralogix Ltd.
 Email: info@coralogix.com
 """
 
+import os
 from enum import IntEnum
 
 
@@ -49,10 +50,10 @@ class Coralogix(object):
     FAST_SEND_SPEED_INTERVAL = 100.0 / 1000
 
     # Coralogix logs url
-    CORALOGIX_LOG_URL = 'https://api.coralogix.com:443/api/v1/logs'
+    CORALOGIX_LOG_URL = os.environ.get('CORALOGIX_LOG_URL', 'https://api.coralogix.com:443/api/v1/logs')
 
     # Coralogix time delay url
-    CORALOGIX_TIME_DELTA_URL = 'https://api.coralogix.com:443/sdk/v1/time'
+    CORALOGIX_TIME_DELTA_URL = os.environ.get('CORALOGIX_TIME_DELTA_URL', 'https://api.coralogix.com:443/sdk/v1/time')
 
     # Timeout for time-delay request
     TIME_DELAY_TIMEOUT = 1
