@@ -1,2 +1,1 @@
-enum34==1.1.6; python_version < '3'
-requests==2.21.0
+requests==2.24.0
