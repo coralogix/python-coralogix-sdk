@@ -17,6 +17,7 @@ Adding `Coralogix` logging handler in your logging system:
 
     # Get an instance of Python standard logger.
     logger = logging.getLogger("Python Logger")
+    logger.setLevel(logging.DEBUG)
 
     # Get a new instance of Coralogix logger.
     coralogix_handler = CoralogixLogger(PRIVATE_KEY, APP_NAME, SUB_SYSTEM)
