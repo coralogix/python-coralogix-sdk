@@ -25,11 +25,11 @@ setup(
     packages=find_packages(),
     python_requires='>=3.5',
     install_requires=[
-        'requests==2.24.0',
+        'requests>=2.24.0',
     ],
     extras_require={
         'development': [
-            'wheel==0.31.0',
+            'wheel>=0.31.0',
         ],
     },
     tests_require=[
