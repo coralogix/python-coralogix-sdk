@@ -30,6 +30,7 @@ setup(
     extras_require={
         'development': [
             'wheel>=0.31.0',
+            'twine>=3.3.0',
         ],
     },
     tests_require=[
