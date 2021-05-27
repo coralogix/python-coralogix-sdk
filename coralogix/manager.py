@@ -347,6 +347,7 @@ def _handler():
     """
     try:
         LoggerManager.stop()
+        LoggerManager.flush()
         if LoggerManager._thread:
            LoggerManager._thread.join()
     except Exception:
