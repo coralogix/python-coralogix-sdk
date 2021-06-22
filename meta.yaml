@@ -1,0 +1,10 @@
+name: coralogix-sdk
+CX_PRODUCT: cs
+deployable_type: library
+version: 0.1.0
+codeLanguage: python
+languageVersion: 
+  - 3.5
+  - 3.6
+  - 3.7
+  - 3.8
