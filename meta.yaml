@@ -1,4 +1,4 @@
-name: coralogix-sdk
+name: python-coralogix-sdk
 CX_PRODUCT: cs
 deployable_type: library
 version: 0.1.0
