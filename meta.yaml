@@ -7,3 +7,4 @@ language_versions: [ '3.5', '3.6', '3.7', '3.8']
 tests: true
 test_image_name: python-mirror
 test_image_tag: "3.8"
+public: true
