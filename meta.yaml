@@ -5,3 +5,4 @@ version: 0.1.0
 code_language: python
 language_versions: [ '3.5', '3.6', '3.7', '3.8']
 tests: true
+test_image_name: python-mirror
