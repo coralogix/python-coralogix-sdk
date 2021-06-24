@@ -8,4 +8,4 @@ tests: true
 test_image_name: python-mirror
 test_image_tag: "3.8"
 public: true
-codecov_token: 87c96e9a1b2a30209f61b5c1c257a1e27376c58af809dd780b4fb3baf3a2ede3
+test_reporter_id: 87c96e9a1b2a30209f61b5c1c257a1e27376c58af809dd780b4fb3baf3a2ede3
