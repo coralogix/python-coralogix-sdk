@@ -172,7 +172,7 @@ class CoralogixLogger(Handler):
             return wrapper
         else:
             DebugLogger.error('Invalid severity name "{0:s}"!'.format(severity.lower()))
-            raise NotImplementedError('Severity name is invalid!')
+            raise AttributeError('Severity name is invalid!')
 
     @staticmethod
     def flush_messages():

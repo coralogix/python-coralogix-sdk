@@ -48,7 +48,7 @@ class TestCoralogixLogger(TestCase):
         )
 
     def test_fault_log_severity(self):
-        with self.assertRaises(NotImplementedError):
+        with self.assertRaises(AttributeError):
             self.create_logger().__getattr__('invalid')(
                 Coralogix.Severity.DEBUG,
                 'Test message!'
