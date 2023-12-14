@@ -1,6 +1,5 @@
 name: Publish Python distribution to PyPI
 on:
-#  push
   release:
     types: [ published ]
 
@@ -29,14 +28,14 @@ jobs:
             name: python-package-distributions
             path: dist/
 
-    publish-to-testpypi:
-        name: Publish Python distribution to TestPyPI
+    publish-to-pypi:
+        name: Publish Python distribution to PyPI
         needs:
         - build
         runs-on: ubuntu-latest
         environment:
-            name: testpypi
-            url: https://test.pypi.org/project/coralogix-logger/
+            name: pypi
+            url: https://pypi.org/project/coralogix-logger/
         permissions:
             id-token: write
         steps:
@@ -45,8 +44,8 @@ jobs:
           with:
             name: python-package-distributions
             path: dist/
-        - name: Publish distribution to TestPyPI
+        - name: Publish distribution to PyPI
           uses: pypa/gh-action-pypi-publish@release/v1
           with:
             password: ${{ secrets.PYPI_TOKEN }}
-            repository-url: https://test.pypi.org/legacy/
+            repository-url: https://upload.pypi.org/legacy/
