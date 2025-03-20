@@ -41,4 +41,4 @@ Coralogix Python SDK
     :target: https://github.com/coralogix/python-coralogix-sdk/graphs/contributors
 
 This package provides logging suites integrated with `Coralogix` logs analytics platform.
-For watch how to use it, please, read `Coralogix Python SDK Docs <https://python-coralogix-sdk.readthedocs.io/en/latest/>`_.
+To see how to use it, please read `Coralogix Python SDK Docs <https://coralogix.com/docs/integrations/sdks/python-sdk/>`_.
