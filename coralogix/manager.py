@@ -15,6 +15,7 @@ import json
 import socket
 import signal
 import atexit
+import sys
 from threading import Thread, Lock, current_thread
 from .constants import Coralogix
 from . import __version__ as logger_version
@@ -352,6 +353,8 @@ def _handler():
            LoggerManager._thread.join()
     except Exception:
         pass
+    finally:
+        sys.exit(1)
 
 
 # Register thread events
