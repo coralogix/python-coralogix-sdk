@@ -50,10 +50,20 @@ class CoralogixHTTPSender(object):
                             attempt
                         )
                     )
+                    
+                    private_key = bulk.get('privateKey', '')
+                    bulk_body = bulk.copy()
+                    bulk_body.pop('privateKey', None)
+                    headers = {
+                        'Authorization': 'Bearer {}'.format(private_key),
+                        'Content-Type': 'application/json'
+                    }
+                    
                     response = requests.post(
                         url=url,
                         timeout=cls._timeout,
-                        json=bulk
+                        json=bulk_body,
+                        headers=headers
                     )
                     DebugLogger.info(
                         'Successfully sent bulk to Coralogix server. Result is: {0:d}'.format(
