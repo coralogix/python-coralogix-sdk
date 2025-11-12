@@ -85,6 +85,84 @@ class Coralogix(object):
     # Sync time update interval
     SYNC_TIME_UPDATE_INTERVAL = 5  # minutes
 
+    # Supported Coralogix regions
+    REGIONS = {
+        'AP1': 'ap1',
+        'AP2': 'ap2',
+        'AP3': 'ap3',
+        'EU1': 'eu1',
+        'EU2': 'eu2',
+        'US1': 'us1',
+        'US2': 'us2',
+    }
+
+    # Default region (used when no region is specified)
+    DEFAULT_REGION = None
+
+    @classmethod
+    def get_log_url(cls, region=None):
+        """
+        Get Coralogix log URL for the specified region
+        :param region: Coralogix region (AP1, AP2, AP3, EU1, EU2, US1, US2)
+        :type region: str or None
+        :return: Log URL for the region
+        :rtype: str
+        :raises ValueError: If region is not provided and CORALOGIX_REGION environment variable is not set
+        """
+        # Use parameter if provided, otherwise check environment variable
+        if not region:
+            env_region = os.environ.get('CORALOGIX_REGION')
+            if env_region:
+                region = env_region.upper()
+        
+        # Region is mandatory - raise error if not provided
+        if not region:
+            raise ValueError(
+                'CORALOGIX_REGION is mandatory. Please provide a region parameter or set the '
+                'CORALOGIX_REGION environment variable. Supported regions: AP1, AP2, AP3, EU1, EU2, US1, US2'
+            )
+        
+        # Validate region
+        if region.upper() not in cls.REGIONS:
+            raise ValueError(
+                'Invalid region "{}". Supported regions: AP1, AP2, AP3, EU1, EU2, US1, US2'.format(region)
+            )
+        
+        region_lower = cls.REGIONS[region.upper()]
+        return 'https://ingress.{}.coralogix.com/logs/v1/singles'.format(region_lower)
+
+    @classmethod
+    def get_time_delta_url(cls, region=None):
+        """
+        Get Coralogix time delta URL for the specified region
+        :param region: Coralogix region (AP1, AP2, AP3, EU1, EU2, US1, US2)
+        :type region: str or None
+        :return: Time delta URL for the region
+        :rtype: str
+        :raises ValueError: If region is not provided and CORALOGIX_REGION environment variable is not set
+        """
+        # Use parameter if provided, otherwise check environment variable
+        if not region:
+            env_region = os.environ.get('CORALOGIX_REGION')
+            if env_region:
+                region = env_region.upper()
+        
+        # Region is mandatory - raise error if not provided
+        if not region:
+            raise ValueError(
+                'CORALOGIX_REGION is mandatory. Please provide a region parameter or set the '
+                'CORALOGIX_REGION environment variable. Supported regions: AP1, AP2, AP3, EU1, EU2, US1, US2'
+            )
+        
+        # Validate region
+        if region.upper() not in cls.REGIONS:
+            raise ValueError(
+                'Invalid region "{}". Supported regions: AP1, AP2, AP3, EU1, EU2, US1, US2'.format(region)
+            )
+        
+        region_lower = cls.REGIONS[region.upper()]
+        return 'https://api.{}.coralogix.com/sdk/v1/time'.format(region_lower)
+
     @classmethod
     def map_severity(cls, severity):
         """

@@ -43,6 +43,7 @@ class LoggerManager(object):
         cls._time_delta = 0
         cls._mutex = Lock()
         cls._sync_time = False
+        cls._region = None
         cls._init()
 
     @classmethod
@@ -63,8 +64,21 @@ class LoggerManager(object):
         Configure logger with client details
         :param sync_time: Synchronize time with Coralogix servers (default: False)
         :type sync_time: bool
+        :param kwargs: Additional configuration parameters including region
         """
         try:
+            # Extract region from kwargs if provided
+            region = kwargs.pop('region', None)
+            if region:
+                cls._region = region.upper() if isinstance(region, str) else region
+            else:
+                # Check environment variable
+                env_region = os.environ.get('CORALOGIX_REGION')
+                if env_region:
+                    cls._region = env_region.upper()
+                else:
+                    cls._region = None
+            
             kwargs.update({'computerName': socket.gethostname().strip()})
             cls._bulk_template = copy.deepcopy(kwargs)
             cls._sync_time = bool(sync_time)
@@ -237,7 +251,9 @@ class LoggerManager(object):
         )
 
         if cls._bulk_template['logEntries']:
-            CoralogixHTTPSender.send_request(cls._bulk_template)
+            # Get the appropriate URL based on region
+            log_url = Coralogix.get_log_url(cls._region)
+            CoralogixHTTPSender.send_request(cls._bulk_template, url=log_url)
 
     @classmethod
     def update_time_delta_interval(cls):
@@ -247,7 +263,9 @@ class LoggerManager(object):
         try:
             # If more than 5 minutes passed from the last sync update
             if time.time() - cls._time_delta_last_update >= 60 * Coralogix.SYNC_TIME_UPDATE_INTERVAL:
-                result, _time_delta = CoralogixHTTPSender.get_time_sync()
+                # Get the appropriate URL based on region
+                time_url = Coralogix.get_time_delta_url(cls._region)
+                result, _time_delta = CoralogixHTTPSender.get_time_sync(url=time_url)
                 if result:
                     cls._time_delta = _time_delta
                     cls._time_delta_last_update = time.time()

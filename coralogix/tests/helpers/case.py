@@ -12,6 +12,7 @@ class TestCase(unittest.TestCase):
         self.PRIVATE_KEY = os.environ.get('PRIVATE_KEY', Coralogix.FAILED_PRIVATE_KEY)
         self.APP_NAME = os.environ.get('APP_NAME', Coralogix.NO_APP_NAME)
         self.SUBSYSTEM_NAME = os.environ.get('SUBSYSTEM_NAME', Coralogix.NO_SUB_SYSTEM)
+        self.REGION = os.environ.get('CORALOGIX_REGION', 'EU2')  # Default to EU2 for tests
         DebugLogger.debug_mode = True
 
     def tearDown(self):

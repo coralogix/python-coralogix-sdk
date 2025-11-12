@@ -7,6 +7,18 @@ from coralogix.manager import LoggerManager
 
 
 class TestLoggerManager(TestCase):
+    def setUp(self):
+        super(TestLoggerManager, self).setUp()
+        # Configure LoggerManager with region for tests that need it
+        if not LoggerManager.configured:
+            LoggerManager.configure(
+                sync_time=False,
+                privateKey=self.PRIVATE_KEY,
+                applicationName=self.APP_NAME,
+                subsystemName=self.SUBSYSTEM_NAME,
+                region=self.REGION
+            )
+
     def test_initialize(self):
         self.assertIsNone(
             LoggerManager.initialize()
@@ -17,7 +29,8 @@ class TestLoggerManager(TestCase):
             sync_time=False,
             privateKey=self.PRIVATE_KEY,
             applicationName=self.APP_NAME,
-            subsystemName=self.SUBSYSTEM_NAME
+            subsystemName=self.SUBSYSTEM_NAME,
+            region=self.REGION
         )
         self.assertIsInstance(LoggerManager.configured, bool)
         self.assertTrue(LoggerManager.configured)
