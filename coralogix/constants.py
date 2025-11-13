@@ -161,7 +161,7 @@ class Coralogix(object):
             )
         
         region_lower = cls.REGIONS[region.upper()]
-        return 'https://api.{}.coralogix.com/sdk/v1/time'.format(region_lower)
+        return 'https://ingress.{}.coralogix.com/sdk/v1/time'.format(region_lower)
 
     @classmethod
     def map_severity(cls, severity):

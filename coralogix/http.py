@@ -10,9 +10,11 @@ Email: info@coralogix.com
 from __future__ import print_function
 from threading import Lock
 import time
+import sys
 import requests
 from .constants import Coralogix
 from .handlers.debug import DebugLogger
+from . import __version__
 
 
 class CoralogixHTTPSender(object):
@@ -22,6 +24,20 @@ class CoralogixHTTPSender(object):
 
     _mutex = Lock()
     _timeout = 30
+
+    @classmethod
+    def _get_user_agent(cls):
+        """
+        Generate User-Agent string for HTTP requests
+        :return: User-Agent string
+        :rtype: str
+        """
+        python_version = '{}.{}.{}'.format(
+            sys.version_info.major,
+            sys.version_info.minor,
+            sys.version_info.micro
+        )
+        return 'coralogix-python-sdk/{} (Python {})'.format(__version__, python_version)
 
     @classmethod
     def _init(cls, timeout=None):
@@ -52,17 +68,35 @@ class CoralogixHTTPSender(object):
                     )
                     
                     private_key = bulk.get('privateKey', '')
-                    bulk_body = bulk.copy()
-                    bulk_body.pop('privateKey', None)
+                    
+                    # Transform to singles format: array of log objects
+                    # Each log entry gets the metadata fields merged in
+                    application_name = bulk.get('applicationName', '')
+                    subsystem_name = bulk.get('subsystemName', '')
+                    log_entries = bulk.get('logEntries', [])
+                    
+                    # Build singles format payload - direct array of logs
+                    singles_payload = []
+                    for entry in log_entries:
+                        log_object = {
+                            'applicationName': application_name,
+                            'subsystemName': subsystem_name
+                        }
+                        # Merge all fields from the log entry
+                        log_object.update(entry)
+                        
+                        singles_payload.append(log_object)
+                    
                     headers = {
                         'Authorization': 'Bearer {}'.format(private_key),
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'User-Agent': cls._get_user_agent()
                     }
                     
                     response = requests.post(
                         url=url,
                         timeout=cls._timeout,
-                        json=bulk_body,
+                        json=singles_payload,
                         headers=headers
                     )
                     DebugLogger.info(
@@ -97,9 +131,13 @@ class CoralogixHTTPSender(object):
         try:
             cls._mutex.acquire()
             DebugLogger.info('Syncing time with Coralogix server...')
+            headers = {
+                'User-Agent': cls._get_user_agent()
+            }
             response = requests.get(
                 url=url,
-                timeout=cls._timeout
+                timeout=cls._timeout,
+                headers=headers
             )
             if response and response.status_code == 200:
                 # Server epoch time in milliseconds

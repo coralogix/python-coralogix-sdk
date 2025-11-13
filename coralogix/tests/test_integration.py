@@ -133,7 +133,7 @@ class TestIntegration(TestCase):
         time_url = Coralogix.get_time_delta_url('EU2')
         
         self.assertEqual(log_url, 'https://ingress.eu2.coralogix.com/logs/v1/singles')
-        self.assertEqual(time_url, 'https://api.eu2.coralogix.com/sdk/v1/time')
+        self.assertEqual(time_url, 'https://ingress.eu2.coralogix.com/sdk/v1/time')
 
     def test_time_sync_eu2(self):
         """Test time sync endpoint for EU2 region"""

@@ -47,13 +47,13 @@ class TestRegion(TestCase):
     def test_get_time_delta_url_with_region(self):
         """Test that get_time_delta_url returns correct URL for each region"""
         test_cases = [
-            ('AP1', 'https://api.ap1.coralogix.com/sdk/v1/time'),
-            ('AP2', 'https://api.ap2.coralogix.com/sdk/v1/time'),
-            ('AP3', 'https://api.ap3.coralogix.com/sdk/v1/time'),
-            ('EU1', 'https://api.eu1.coralogix.com/sdk/v1/time'),
-            ('EU2', 'https://api.eu2.coralogix.com/sdk/v1/time'),
-            ('US1', 'https://api.us1.coralogix.com/sdk/v1/time'),
-            ('US2', 'https://api.us2.coralogix.com/sdk/v1/time'),
+            ('AP1', 'https://ingress.ap1.coralogix.com/sdk/v1/time'),
+            ('AP2', 'https://ingress.ap2.coralogix.com/sdk/v1/time'),
+            ('AP3', 'https://ingress.ap3.coralogix.com/sdk/v1/time'),
+            ('EU1', 'https://ingress.eu1.coralogix.com/sdk/v1/time'),
+            ('EU2', 'https://ingress.eu2.coralogix.com/sdk/v1/time'),
+            ('US1', 'https://ingress.us1.coralogix.com/sdk/v1/time'),
+            ('US2', 'https://ingress.us2.coralogix.com/sdk/v1/time'),
         ]
         
         for region, expected_url in test_cases:
@@ -99,7 +99,7 @@ class TestRegion(TestCase):
         """Test that get_time_delta_url uses CORALOGIX_REGION environment variable"""
         os.environ['CORALOGIX_REGION'] = 'US1'
         url = Coralogix.get_time_delta_url(None)
-        self.assertEqual(url, 'https://api.us1.coralogix.com/sdk/v1/time')
+        self.assertEqual(url, 'https://ingress.us1.coralogix.com/sdk/v1/time')
 
     def test_get_log_url_parameter_overrides_environment(self):
         """Test that region parameter takes precedence over environment variable"""
@@ -111,7 +111,7 @@ class TestRegion(TestCase):
         """Test that region parameter takes precedence over environment variable"""
         os.environ['CORALOGIX_REGION'] = 'US1'
         url = Coralogix.get_time_delta_url('EU1')
-        self.assertEqual(url, 'https://api.eu1.coralogix.com/sdk/v1/time')
+        self.assertEqual(url, 'https://ingress.eu1.coralogix.com/sdk/v1/time')
 
     def test_logger_with_region_parameter(self):
         """Test that CoralogixLogger accepts region parameter"""
