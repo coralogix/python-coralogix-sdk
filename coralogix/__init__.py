@@ -15,5 +15,5 @@ __credits__ = ['Ariel Assaraf', 'Lior Redlus', 'Amnon Shahar']
 __license__ = 'Apache Version 2.0'
 __version__ = '2.1.0'
 __maintainer__ = 'Coralogix Ltd.'
-__date__ = '10 Jan 2025'
+__date__ = '10 Dec 2025'
 __status__ = 'Stable'
