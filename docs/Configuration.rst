@@ -9,8 +9,8 @@ Using Coralogix Python SDK requires these mandatory parameters:
 
 * **SUBSYSTEM NAME** - Your application probably has multiple subsystems. For example: Backend servers, Middleware, Frontend servers etc. In order to help you examine and filter the data you need, inserting the subsystem parameter is vital.
 
-Required Parameters
--------------------
+Region Configuration
+--------------------
 
 * **REGION** - The Coralogix region to use for log ingestion. This parameter is **mandatory**. Supported regions are:
 
@@ -27,4 +27,4 @@ Required Parameters
   * Passing the ``region`` parameter when initializing the logger
   * Setting the ``CORALOGIX_REGION`` environment variable
 
-  **Note**: If no region is specified (neither as a parameter nor via environment variable), the SDK will raise a ``ValueError``.
+  **Note**: If no region is specified (neither as a parameter nor via environment variable), the SDK will raise a ``ValueError``. The SDK uses modern regional endpoints (``ingress.{region}.coralogix.com``) as per the Coralogix endpoint modernization effective March 31, 2026.

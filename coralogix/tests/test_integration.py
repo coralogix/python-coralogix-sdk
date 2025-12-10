@@ -140,7 +140,7 @@ class TestIntegration(TestCase):
         from coralogix.http import CoralogixHTTPSender
         
         time_url = Coralogix.get_time_delta_url('EU2')
-        self.assertEqual(time_url, 'https://api.eu2.coralogix.com/sdk/v1/time')
+        self.assertEqual(time_url, 'https://ingress.eu2.coralogix.com/sdk/v1/time')
         
         # Test time sync
         result, time_delta = CoralogixHTTPSender.get_time_sync(url=time_url)

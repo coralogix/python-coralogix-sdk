@@ -49,14 +49,16 @@ class CoralogixHTTPSender(object):
         cls._timeout = timeout or Coralogix.HTTP_TIMEOUT
 
     @classmethod
-    def send_request(cls, bulk, url=Coralogix.CORALOGIX_LOG_URL):
+    def send_request(cls, bulk, url=None):
         """
         Send request procedure
         :param bulk: Bulk with logs records
         :type bulk: dict
-        :param url: Log collector url
+        :param url: Log collector url (required, region-specific)
         :type url: str
         """
+        if not url:
+            raise ValueError('URL parameter is required. Use Coralogix.get_log_url(region) to get the correct regional URL.')
         try:
             cls._mutex.acquire()
             for attempt in range(1, Coralogix.HTTP_SEND_RETRY_COUNT+2):
@@ -120,14 +122,16 @@ class CoralogixHTTPSender(object):
                 cls._mutex.release()
 
     @classmethod
-    def get_time_sync(cls, url=Coralogix.CORALOGIX_TIME_DELTA_URL):
+    def get_time_sync(cls, url=None):
         """
         A helper method to get Coralogix server current time and calculate the time difference
-        :param url: Time synchronization service url
+        :param url: Time synchronization service url (required, region-specific)
         :type url: str
         :return: Time synchronization status, time delta
         :rtype: tuple
         """
+        if not url:
+            raise ValueError('URL parameter is required. Use Coralogix.get_time_delta_url(region) to get the correct regional URL.')
         try:
             cls._mutex.acquire()
             DebugLogger.info('Syncing time with Coralogix server...')
