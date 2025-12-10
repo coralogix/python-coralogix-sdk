@@ -22,7 +22,7 @@ class CoralogixLogger(Handler):
     """
 
     def __init__(self, private_key=None, app_name=None, subsystem=None,
-                 category=None, sync_time=False):
+                 category=None, sync_time=False, region=None):
         """
         Initialize Coralogix Logger
         :param private_key: Private key for Coralogix
@@ -35,8 +35,10 @@ class CoralogixLogger(Handler):
         :type category: str
         :param sync_time: Synchronize time with Coralogix servers (default: False)
         :type sync_time: bool
+        :param region: Coralogix region (AP1, AP2, AP3, EU1, EU2, US1, US2)
+        :type region: str
         """
-        self.configure(private_key, app_name, subsystem, sync_time)
+        self.configure(private_key, app_name, subsystem, sync_time, region)
         self._category = category if category is not None else Coralogix.CORALOGIX_CATEGORY
         Handler.__init__(self)
 
@@ -68,7 +70,7 @@ class CoralogixLogger(Handler):
         )
 
     @classmethod
-    def configure(cls, private_key, app_name, sub_system, sync_time=False):
+    def configure(cls, private_key, app_name, sub_system, sync_time=False, region=None):
         """
         Configure Coralogix logger with customer specific values
         :param private_key: Coralogix account private key
@@ -79,6 +81,8 @@ class CoralogixLogger(Handler):
         :type sub_system: str
         :param sync_time: Synchronize time with Coralogix servers (default: False)
         :type sync_time: bool
+        :param region: Coralogix region (AP1, AP2, AP3, EU1, EU2, US1, US2)
+        :type region: str
         """
         if not LoggerManager.configured:
             private_key = private_key if private_key and not private_key.isspace() \
@@ -92,7 +96,8 @@ class CoralogixLogger(Handler):
                 sync_time=sync_time,
                 privateKey=private_key,
                 applicationName=app_name,
-                subsystemName=sub_system
+                subsystemName=sub_system,
+                region=region
             )
 
     @classmethod

@@ -12,7 +12,8 @@ class TestCoralogixLogger(TestCase):
         return CoralogixLogger(
             private_key=self.PRIVATE_KEY,
             app_name=self.APP_NAME,
-            subsystem=self.SUBSYSTEM_NAME
+            subsystem=self.SUBSYSTEM_NAME,
+            region=self.REGION
         )
 
     def test_set_debug_mode(self):
