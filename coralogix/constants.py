@@ -52,10 +52,10 @@ class Coralogix(object):
     # Legacy constants removed - use get_log_url(region) and get_time_delta_url(region) instead
     # Regions are now mandatory as per Coralogix endpoint deprecation (March 31, 2026)
     # Coralogix logs url
-    # CORALOGIX_LOG_URL = os.environ.get('CORALOGIX_LOG_URL', 'https://ingress.coralogix.com:443/api/v1/logs')
+    CORALOGIX_LOG_URL = os.environ.get('CORALOGIX_LOG_URL', 'https://ingress.coralogix.com:443/api/v1/logs')
 
     # Coralogix time delay url
-    # CORALOGIX_TIME_DELTA_URL = os.environ.get('CORALOGIX_TIME_DELTA_URL', 'https://ingress.coralogix.com:443/sdk/v1/time')
+    CORALOGIX_TIME_DELTA_URL = os.environ.get('CORALOGIX_TIME_DELTA_URL', 'https://ingress.coralogix.com:443/sdk/v1/time')
 
 
     # Timeout for time-delay request
