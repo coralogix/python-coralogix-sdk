@@ -52,7 +52,7 @@ class Coralogix(object):
     # Legacy constants removed - use get_log_url(region) and get_time_delta_url(region) instead
     # Regions are now mandatory as per Coralogix endpoint deprecation (March 31, 2026)
     # Coralogix logs url
-    CORALOGIX_LOG_URL = os.environ.get('CORALOGIX_LOG_URL', 'https://ingress.coralogix.com:443/api/v1/logs')
+    CORALOGIX_LOG_URL = os.environ.get('CORALOGIX_LOG_URL', 'https://ingress.coralogix.com:443/logs/v1/singles')
 
     # Coralogix time delay url
     CORALOGIX_TIME_DELTA_URL = os.environ.get('CORALOGIX_TIME_DELTA_URL', 'https://ingress.coralogix.com:443/sdk/v1/time')
@@ -112,6 +112,11 @@ class Coralogix(object):
         :rtype: str
         :raises ValueError: If region is not provided and CORALOGIX_REGION environment variable is not set
         """
+        # Check for custom URL first
+        custom_url = os.environ.get('CORALOGIX_LOG_URL')
+        if custom_url:
+            return custom_url
+        
         # Use parameter if provided, otherwise check environment variable
         if not region:
             env_region = os.environ.get('CORALOGIX_REGION')
@@ -144,6 +149,11 @@ class Coralogix(object):
         :rtype: str
         :raises ValueError: If region is not provided and CORALOGIX_REGION environment variable is not set
         """
+        # Check for custom URL first
+        custom_url = os.environ.get('CORALOGIX_TIME_DELTA_URL')
+        if custom_url:
+            return custom_url
+        
         # Use parameter if provided, otherwise check environment variable
         if not region:
             env_region = os.environ.get('CORALOGIX_REGION')
