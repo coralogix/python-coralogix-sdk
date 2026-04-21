@@ -1,6 +1,11 @@
 Coralogix Python SDK
 ====================
 
+Deprecation Notics
+------------------
+
+This code will be derecated in favore of `OTEl SDK <https://github.com/open-telemetry/opentelemetry-python?tab=readme-ov-file>`_, and will no longer be supported, as of 22.9.2025
+
 .. image:: https://img.shields.io/pypi/v/coralogix_logger.svg
     :target: https://pypi.python.org/pypi/coralogix_logger
 
